@@ -19,7 +19,7 @@ const GameScreen = (props) => {
         <View style={styles.numberContainer}>
           <Text style={styles.number}>{selectedNumber}</Text>
         </View>
-        <Text style={styles.resultContainer}>The anwser is {props.answer > selectedNumber ? 'greater':props.answer < selectedNumber ? 'lower':props.onGameOver(rounds)} Round:{rounds}</Text>
+        <Text style={styles.resultContainer}>The anwser is {props.answer > selectedNumber ? 'greater':props.answer < selectedNumber ? 'lower':props.answer == selectedNumber ?props.onGameOver(rounds):""} Round:{rounds}</Text>
       </View>
     );
   }
@@ -38,11 +38,20 @@ const GameScreen = (props) => {
 
   // ฟังก์ชันสำหรับอัพเดทค่าสเตทต่างๆ เมื่อผู้เล่นกด confirm
   const confirmInputHandler = () => {
-    setSelectedNumber(parseInt(enteredValue))
-    setEnteredValue("")
-    setConfirmed(true)
-    setRounds(rounds+1);
-    Keyboard.dismiss();
+    if(enteredValue===""){
+      setSelectedNumber(0)
+      setEnteredValue("")
+      setConfirmed(true)
+      setRounds(rounds+1);
+      Keyboard.dismiss();
+    }
+    else{
+      setSelectedNumber(parseInt(enteredValue))
+      setEnteredValue("")
+      setConfirmed(true)
+      setRounds(rounds+1);
+      Keyboard.dismiss(); 
+    }
   //   ...เพิ่มโค้ด แปลงค่า enteredValue ให้เป็นตัวเลข
   //   ...เพิ่มโค้ด อัพเดทค่าในสเตทต่างๆ ตามที่กำหนด
    };
