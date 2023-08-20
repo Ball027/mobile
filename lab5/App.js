@@ -17,8 +17,12 @@ export default function App() {
       <MealsNavigator.Screen name="Categories" component={CategoriesScreen}
        options={{title: "Meal Categories"
                 }} />
-      <MealsNavigator.Screen name="CategoryMeals" component={CategoryMealsScreen}/>
-      <MealsNavigator.Screen name="MealDetail" component={MealDetailScreen}/>
+      <MealsNavigator.Screen name="CategoryMeals" component={CategoryMealsScreen}
+      options={({route})=>({title:route.params.categoryTitle})
+                }/>
+      <MealsNavigator.Screen name="MealDetail" component={MealDetailScreen}
+      options={({route})=>({title:route.params.mealtitle})
+    }/>
     </MealsNavigator.Navigator>
   </NavigationContainer>)
 }

@@ -18,7 +18,7 @@ const CategoriesScreen = ({navigation}) => {
         title={itemData.item.title}
         color={itemData.item.color}
         onSelect={() => {
-          navigation.navigate("CategoryMeals", { categoryid: "c1", categoryTitle: "Italian" })
+          navigation.navigate("CategoryMeals", { categoryid: itemData.item.id, categoryTitle: itemData.item.title })
         }}
       />
 
