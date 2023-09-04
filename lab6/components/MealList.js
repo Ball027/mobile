@@ -4,14 +4,26 @@ import { FlatList, View, StyleSheet } from "react-native";
 const MealList = (props) => {
   const renderMealItem = (itemData) => {
     return (
-      //เขียนโค้ดเพิ่ม
+      <MealItem
+        title={itemData.item.title}
+        duration={itemData.item.duration}
+        complexity={itemData.item.complexity}
+        affordability={itemData.item.affordability}
+        image={itemData.item.imageUrl}
+        onSelectMeal={() => {
+          navigation.navigate("MealDetail", { mealtitle: itemData.item.title, mealsteps: itemData.item.steps })
+        }}
+      />
+
     );
   };
 
   return (
     <View style={styles.list}>
       <FlatList
-        //เขียนโค้ดเพิ่ม
+        style={{ width: "100%" }}
+        data={props.listdata}
+        renderItem={renderMealItem}
       />
     </View>
   );

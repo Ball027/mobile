@@ -17,6 +17,8 @@ import FiltersScreen from "../screens/FiltersScreen";
 const MealsNavigator = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const MainNavigator = createDrawerNavigator();
+const FavNavigator = createNativeStackNavigator();
+const FiltersNavigator = createNativeStackNavigator();
 
 // สร้าง function สำหรับการกำหนด Navigator แต่ละตัว เช่น
 function MealNavigator() {
@@ -37,25 +39,31 @@ function MealNavigator() {
 
 function FavNavigator(){
   return(
-    0
-
+    <FavNavigator.Navigator>
+      <FavNavigator.Screen name="Favorites" component={FavoriteScreen}/>
+      <FavNavigator.Screen name="MealDetail" component={MealDetailScreen}/>
+    </FavNavigator.Navigator>
   );
 }
 
 function MealsFavTabNavigator() {
   return (
     // กำหนดรายละเอียดของ navigator
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen name="Meals" component={MealNavigator}
        options={{tabBarIcon: ({ color, size }) => {return <Ionicons name="ios-restaurant" size={size} color={color} />;},}}/>
-      <Tab.Screen name="Favorites" component={FavoriteScreen} 
+      <Tab.Screen name="Favorites" component={FavNavigator} 
       options={{tabBarIcon: ({ color, size }) => {return <Ionicons name="ios-star" size={size} color={color} />;},}}/>
     </Tab.Navigator>
   );
 }
 
 function FiltersNavigator(){
-  return 0;
+  return (
+    <FiltersNavigator.Navigator>
+      <FiltersNavigator.Screen name="Filters" component={FiltersScreen}/>
+    </FiltersNavigator.Navigator>
+  );
 }
 
 
@@ -63,9 +71,9 @@ function FiltersNavigator(){
 export default function MyNavigator() {
   return (
     <NavigationContainer>
-      <MainNavigator.Navigator>
-        <MainNavigator.Screen name="MealsFav" component={MealsFavTabNavigator}/>
-        <MainNavigator.Screen name="MealsFav2" component={FiltersNavigator}/>
+      <MainNavigator.Navigator screenOptions={{headerShown:false}}>
+        <MainNavigator.Screen name="MealsFav" component={MealsFavTabNavigator} options={{drawerLabel:"Meals"}}/>
+        <MainNavigator.Screen name="Filters" component={FiltersNavigator}/>
       </MainNavigator.Navigator>
   </NavigationContainer>
   );
