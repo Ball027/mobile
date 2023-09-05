@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, View, StyleSheet } from "react-native";
-
+import MealItem from "./MealItem";
 const MealList = (props) => {
   const renderMealItem = (itemData) => {
     return (
@@ -11,7 +11,14 @@ const MealList = (props) => {
         affordability={itemData.item.affordability}
         image={itemData.item.imageUrl}
         onSelectMeal={() => {
-          navigation.navigate("MealDetail", { mealtitle: itemData.item.title, mealsteps: itemData.item.steps })
+          props.navigation.navigate("MealDetail",{ 
+                  title: itemData.item.title,
+                  steps: itemData.item.steps,
+                  image: itemData.item.imageUrl,
+                  duration: itemData.item.duration,
+                  complexity: itemData.item.complexity,
+                  affordability: itemData.item.affordability,
+                  })
         }}
       />
 

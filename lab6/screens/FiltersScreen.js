@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
 
-const FiltersScreen = (props) => {
+const FiltersScreen = () => {
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Available Filters / Restrictions</Text>

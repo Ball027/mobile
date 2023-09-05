@@ -12,6 +12,7 @@ import MealItem from "../components/MealItem";
 import MealList from "../components/MealList";
 
 const CategoryMealsScreen = ({route,navigation}) => {
+  
   const renderMealItem = (itemData) => {
     return (
       <MealItem
@@ -25,7 +26,6 @@ const CategoryMealsScreen = ({route,navigation}) => {
           navigation.navigate("MealDetail",{mealtitle:itemData.item.title,mealsteps:itemData.item.steps})
         }}
       />
-
       // ส่วนนี้ <View>...</View> ใช้เพื่อการทดลอง และให้คอมเมนต์โค้ดส่วนนี้และเรียกใช้ <MealItem> ข้างบนแทน
       // <View style={{ height: 50, width: "40%" }}>
       //   <Text>{itemData.item.title}</Text>
@@ -42,10 +42,10 @@ const CategoryMealsScreen = ({route,navigation}) => {
 
   return (
     <View style={styles.screen}>
-      <FlatList
+      <MealList
         style={{ width: "100%" }}
-        data={displayedMeals}
-        renderItem={renderMealItem}
+        listdata={displayedMeals}
+        navigation={navigation}
       />
     </View>
 

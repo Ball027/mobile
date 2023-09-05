@@ -17,7 +17,7 @@ import FiltersScreen from "../screens/FiltersScreen";
 const MealsNavigator = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const MainNavigator = createDrawerNavigator();
-const FavNavigator = createNativeStackNavigator();
+const FavsNavigator = createNativeStackNavigator();
 const FiltersNavigator = createNativeStackNavigator();
 
 // สร้าง function สำหรับการกำหนด Navigator แต่ละตัว เช่น
@@ -31,7 +31,7 @@ function MealNavigator() {
       options={({route})=>({title:route.params.categoryTitle})
                 }/>
       <MealsNavigator.Screen name="MealDetail" component={MealDetailScreen}
-      options={({route})=>({title:route.params.mealtitle})
+      options={({route})=>({title:route.params.title})
     }/>
     </MealsNavigator.Navigator>
   );
@@ -39,10 +39,10 @@ function MealNavigator() {
 
 function FavNavigator(){
   return(
-    <FavNavigator.Navigator>
-      <FavNavigator.Screen name="Favorites" component={FavoriteScreen}/>
-      <FavNavigator.Screen name="MealDetail" component={MealDetailScreen}/>
-    </FavNavigator.Navigator>
+    <FavsNavigator.Navigator>
+      <FavsNavigator.Screen name="Favorite" component={FavoriteScreen}/>
+      <FavsNavigator.Screen name="MealDetail" component={MealDetailScreen} options={({route})=>({title:route.params.title})}/>
+    </FavsNavigator.Navigator>
   );
 }
 
@@ -58,7 +58,7 @@ function MealsFavTabNavigator() {
   );
 }
 
-function FiltersNavigator(){
+function FilterNavigator(){
   return (
     <FiltersNavigator.Navigator>
       <FiltersNavigator.Screen name="Filters" component={FiltersScreen}/>
@@ -73,7 +73,7 @@ export default function MyNavigator() {
     <NavigationContainer>
       <MainNavigator.Navigator screenOptions={{headerShown:false}}>
         <MainNavigator.Screen name="MealsFav" component={MealsFavTabNavigator} options={{drawerLabel:"Meals"}}/>
-        <MainNavigator.Screen name="Filters" component={FiltersNavigator}/>
+        <MainNavigator.Screen name="Filters" component={FilterNavigator}/>
       </MainNavigator.Navigator>
   </NavigationContainer>
   );
