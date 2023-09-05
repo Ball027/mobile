@@ -39,7 +39,7 @@ function MealNavigator() {
 
 function FavNavigator(){
   return(
-    <FavsNavigator.Navigator>
+    <FavsNavigator.Navigator screenOptions={{ headerStyle: { backgroundColor: "#4a148c", },headerTintColor:"white", }}>
       <FavsNavigator.Screen name="Favorite" component={FavoriteScreen}/>
       <FavsNavigator.Screen name="MealDetail" component={MealDetailScreen} options={({route})=>({title:route.params.title})}/>
     </FavsNavigator.Navigator>
