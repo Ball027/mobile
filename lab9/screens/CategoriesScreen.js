@@ -11,14 +11,17 @@ import {
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTile from "../components/CategoryGridTile";
 
-const CategoriesScreen = ({navigation}) => {
+const CategoriesScreen = ({ navigation }) => {
   const renderGridItem = (itemData) => {
     return (
       <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
         onSelect={() => {
-          navigation.navigate("CategoryMeals", { categoryid: itemData.item.id, categoryTitle: itemData.item.title })
+          navigation.navigate("CategoryMeals", {
+            categoryId: itemData.item.id,
+            categoryTitle: itemData.item.title
+          });
         }}
       />
 
